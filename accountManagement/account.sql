@@ -16,15 +16,15 @@ CREATE TABLE account.tb_account (
 );
 
 INSERT INTO account.tb_account(accountId, name, balance)
-VALUES (account.account_id_seq.nextval, '±è¾Æ¹«°³', 500);
+VALUES (account.account_id_seq.nextval, 'ì •ì•½ìš©', 500);
 INSERT INTO account.tb_account(accountId, name, balance)
-VALUES (account.account_id_seq.nextval, 'È«±æµ¿', 27000);
+VALUES (account.account_id_seq.nextval, 'í™ê¸¸ë™', 27000);
 INSERT INTO account.tb_account(accountId, name, balance)
-VALUES (account.account_id_seq.nextval, 'ÀÓ²©Á¤', 100000);
+VALUES (account.account_id_seq.nextval, 'ì„êº½ì •', 100000);
 INSERT INTO account.tb_account(accountId, name, balance)
-VALUES (account.account_id_seq.nextval, 'Àå±æ»ê', 300000);
+VALUES (account.account_id_seq.nextval, 'ì¥ê¸¸ì‚°', 300000);
 INSERT INTO account.tb_account(accountId, name, balance)
-VALUES (account.account_id_seq.nextval, 'ÀÌ¼ø½Å', 16000000);
+VALUES (account.account_id_seq.nextval, 'ì´ìˆœì‹ ', 16000000);
 commit;
 
 select * from account.tb_account;
