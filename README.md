@@ -62,8 +62,31 @@
 
 ## 📺 실행 이미지 / 영상
 
-### 🖼 이미지
-
 ### 🎥 실행 영상
 
+### 0️⃣ 전체 데이터 조회
+<img src=""/>
 
+### 1️⃣ 송금
+<img src=""/>
+
+### 2️⃣ 입금
+<img src=""/>
+
+### 3️⃣ 계좌 추가
+<img src="https://user-images.githubusercontent.com/71202869/258586670-d27d40c1-25fb-49c5-ab4a-d8fb900a5372.gif"/>
+ 
+### 4️⃣ 계좌 삭제
+<img src="https://user-images.githubusercontent.com/71202869/258586675-39694ac8-4412-4bbe-822d-06bdd467b9f1.gif"/>
+
+### 5️⃣ 송신에러 처리
+<img src=""/>
+
+### 6️⃣ 수신에러 처리
+<img src=""/>
+
+### <a href = "">7️⃣ 삭제에러 처리</a>
+<img src=""/>
+
+### 8️⃣ 종료
+<img src=""/>
