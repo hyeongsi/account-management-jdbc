@@ -116,8 +116,23 @@ public class AccountService {
 		
 		return result;
 	}
-	public int deleteAccount(int id) {
+	public int deleteAccount(int accountId) {
+		Connection conn = null;
+		AccountDAO dao = null;
 		int result = 0;
+		
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			dao = new AccountDAO();
+			
+			result = dao.delete(conn, accountId);		
+		} catch (SQLException e) {
+			e.printStackTrace(); 
+		} finally {
+			try {
+				if(conn != null) conn.close();
+			} catch (SQLException e) { e.printStackTrace(); }
+		}
 		
 		return result;
 	}

@@ -28,3 +28,4 @@ VALUES (account.account_id_seq.nextval, 'ÀÌ¼ø½Å', 16000000);
 commit;
 
 select * from account.tb_account;
+

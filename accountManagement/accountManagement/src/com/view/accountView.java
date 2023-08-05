@@ -1,6 +1,7 @@
 package com.view;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.dto.AccountDTO;
@@ -89,10 +90,35 @@ public class accountView {
 		service.createAccount(name);
 	}
 	public static void deleteAccount(Scanner scan) {
-		System.out.print ("삭제할 계정의 id를 입력해주세요. => ");
-		int id = scan.nextInt();
+		int result = 0;
+		int id = -1;
 		
-		service.deleteAccount(id);
+		try {
+			System.out.print ("삭제할 계정의 id를 입력해주세요. => ");
+			id = scan.nextInt();
+			
+			System.out.print ("정말로 삭제하시겠습니까? (y/n) => ");
+			String yn = scan.next();
+			
+			switch (yn) {
+			case "y":
+			case "Y":
+				result = service.deleteAccount(id);
+				break;
+			default:
+				System.out.println("계정을 삭제하지 않고 종료합니다. ");
+				return;
+			}
+			
+			if(result == 0) {
+				System.out.println("일치하는 id가 없습니다. 계정을 삭제하지 않고 종료합니다. ");
+			} else {
+				System.out.println(id + " (id)의 계정을 삭제했습니다. ");
+			}
+		} catch(InputMismatchException e) {
+			scan.nextLine();	// scan의 버퍼 비우기
+			System.out.println("입력한 값이 숫자값이 아닙니다. 계정을 삭제하지 않고 종료합니다. ");
+		}
 	}
 	
 	public static void renderDTO(ArrayList<AccountDTO> list) {
