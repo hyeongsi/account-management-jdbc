@@ -1,13 +1,16 @@
 package com.view;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import javax.security.auth.login.AccountException;
+
 import com.dto.AccountDTO;
 import com.service.AccountService;
 
-public class accountView {
+public class AccountView {
 	static AccountService service = new AccountService();
 	
 	static final int READ_ALL = 1;
@@ -16,7 +19,7 @@ public class accountView {
 	static final int CREATE = 4;
 	static final int DELETE = 5;
 
-	private accountView() {};
+	private AccountView() {};
 	
 	public static void renderMenu() {
 		System.out.println("**************************");
@@ -63,34 +66,55 @@ public class accountView {
 		ArrayList<AccountDTO> list = service.readAll();
 		renderDTO(list);
 	}
-	public static void transfer(Scanner scan) {
-		System.out.print("송신자의 계정 id를 입력해주세요. => ");
-		int sendAcntId = scan.nextInt();
-		System.out.print("보낼 금액을 입력해주세요. => ");
-		int amount = scan.nextInt();
-		System.out.print("수신자의 계정 id를 입력해주세요. => ");
-		int recvAcntId = scan.nextInt();
-		
-		service.transfer(sendAcntId, recvAcntId, amount);
-		// 송수신 처리 여부에 따라 예외처리
+	public static void transfer(Scanner scan) {	
+		try {
+			System.out.print("송신자의 계정 id를 입력해주세요. => ");
+			int sendAcntId = scan.nextInt();
+			System.out.print("보낼 금액을 입력해주세요. => ");
+			int amount = scan.nextInt();
+			System.out.print("수신자의 계정 id를 입력해주세요. => ");
+			int recvAcntId = scan.nextInt();
+			
+			// 송금 가능 잔액 확인 후 송금 진행
+			if(service.isPosibleSend(sendAcntId, amount)) {
+				service.transfer(sendAcntId, recvAcntId, amount);	
+				
+				DecimalFormat df = new DecimalFormat("###,###");
+				System.out.println(sendAcntId + " (id)님이 + " + 
+						recvAcntId +" (id)님에게 " +
+						df.format(amount) + "원을 송금했습니다.");
+			}else {
+				System.out.println("송금을 실패했습니다.");
+			}	
+		}catch(InputMismatchException e) {
+			inputMiss(scan, "송금하지 않고 종료합니다. ");
+		}catch(AccountException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	public static void deposit(Scanner scan) {
-		System.out.print("입금할 계정의 id를 입력해주세요. => ");
-		int recvAcntId = scan.nextInt();
-		System.out.print("입금할 금액을 입력해주세요. => ");
-		int amount = scan.nextInt();
-		
-		service.deposit(recvAcntId, amount);
-		// 송수신 처리 여부에 따라 예외처리
+		try {
+			System.out.print("입금할 계정의 id를 입력해주세요. => ");
+			int recvAcntId = scan.nextInt();
+			System.out.print("입금할 금액을 입력해주세요. => ");
+			int amount = scan.nextInt();
+			
+			service.deposit(recvAcntId, amount);
+			System.out.println("송금이 완료되었습니다.");
+		} catch(InputMismatchException e) {
+			inputMiss(scan, "송금하지 않고 종료합니다.");
+		} catch (AccountException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	public static void createAccount(Scanner scan) {
 		System.out.print("계정을 생성하는분의 이름을 입력해주세요. => ");
 		String name = scan.next();
 		
 		service.createAccount(name);
+		System.out.println(name + " 계정이 생성되었습니다.");
 	}
 	public static void deleteAccount(Scanner scan) {
-		int result = 0;
 		int id = -1;
 		
 		try {
@@ -103,21 +127,18 @@ public class accountView {
 			switch (yn) {
 			case "y":
 			case "Y":
-				result = service.deleteAccount(id);
+				service.deleteAccount(id);
 				break;
 			default:
 				System.out.println("계정을 삭제하지 않고 종료합니다. ");
 				return;
 			}
 			
-			if(result == 0) {
-				System.out.println("일치하는 id가 없습니다. 계정을 삭제하지 않고 종료합니다. ");
-			} else {
-				System.out.println(id + " (id)의 계정을 삭제했습니다. ");
-			}
+			System.out.println(id + " (id)의 계정을 삭제했습니다. ");
 		} catch(InputMismatchException e) {
-			scan.nextLine();	// scan의 버퍼 비우기
-			System.out.println("입력한 값이 숫자값이 아닙니다. 계정을 삭제하지 않고 종료합니다. ");
+			inputMiss(scan, "계정을 삭제하지 않고 종료합니다. ");
+		} catch (AccountException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	
@@ -132,5 +153,10 @@ public class accountView {
 		}
 		
 		System.out.println(sb);
+	}
+	
+	public static void inputMiss(Scanner scan, String message) {
+		scan.nextLine();	// scan의 버퍼 비우기
+		System.out.println("올바르지 않은 입력 입니다. " + message);
 	}
 }

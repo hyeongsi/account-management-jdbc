@@ -1,16 +1,16 @@
 import java.util.Scanner;
 
-import com.view.accountView;
+import com.view.AccountView;
 
-public class accountMain {	
+public class AccountMain {	
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		boolean loop = true;
 		
 		while(loop) {
-			accountView.renderMenu();		// 메뉴 출력
-			loop = accountView.run(scan);	// 메뉴 실행
+			AccountView.renderMenu();		// 메뉴 출력
+			loop = AccountView.run(scan);	// 메뉴 실행
 		} 
 		
 		scan.close();

@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.security.auth.login.AccountException;
+
 import com.dao.AccountDAO;
 import com.dto.AccountDTO;
 
@@ -43,7 +45,7 @@ public class AccountService {
 		
 		return list;
 	}
-	public int transfer(int sendAcntId, int recvAcntId, int amount) {
+	public int transfer(int sendAcntId, int recvAcntId, int amount) throws AccountException{
 		Connection conn = null;
 		AccountDAO dao = null;
 		int result = 0;
@@ -62,6 +64,7 @@ public class AccountService {
 				conn.commit();				
 			}else {
 				conn.rollback();
+				throw new AccountException("송금을 실패했습니다.");
 			}
 		} catch (SQLException e) {
 			try {
@@ -76,7 +79,7 @@ public class AccountService {
 		
 		return result;
 	}
-	public int deposit(int recvAcntId, int amount) {
+	public int deposit(int recvAcntId, int amount) throws AccountException {
 		Connection conn = null;
 		AccountDAO dao = null;
 		int result = 0;
@@ -85,7 +88,9 @@ public class AccountService {
 			conn = DriverManager.getConnection(url, id, pw);
 			dao = new AccountDAO();
 			
-			result = dao.updateBalance(conn, recvAcntId, amount);		
+			result = dao.updateBalance(conn, recvAcntId, amount);	
+			if(result == 0)
+				throw new AccountException("송금을 실패했습니다.");
 		} catch (SQLException e) {
 			e.printStackTrace(); 
 		} finally {
@@ -116,7 +121,7 @@ public class AccountService {
 		
 		return result;
 	}
-	public int deleteAccount(int accountId) {
+	public int deleteAccount(int accountId) throws AccountException{
 		Connection conn = null;
 		AccountDAO dao = null;
 		int result = 0;
@@ -125,7 +130,30 @@ public class AccountService {
 			conn = DriverManager.getConnection(url, id, pw);
 			dao = new AccountDAO();
 			
-			result = dao.delete(conn, accountId);		
+			result = dao.delete(conn, accountId);	
+			if(result == 0)
+				throw new AccountException("계정 삭제에 실패했습니다. ");
+		} catch (SQLException e) {
+			e.printStackTrace(); 
+		} finally {
+			try {
+				if(conn != null) conn.close();
+			} catch (SQLException e) { e.printStackTrace(); }
+		}
+		
+		return result;
+	}
+	
+	public boolean isPosibleSend(int accountId, int balance) {
+		Connection conn = null;
+		AccountDAO dao = null;
+		boolean result = false;
+		
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			dao = new AccountDAO();
+			
+			result = dao.isPosibleSend(conn, accountId, balance);	
 		} catch (SQLException e) {
 			e.printStackTrace(); 
 		} finally {

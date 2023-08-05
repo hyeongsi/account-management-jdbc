@@ -135,4 +135,35 @@ public class AccountDAO {
 		
 		return result;
 	}
+	
+	public boolean isPosibleSend(Connection conn, int accountId, int balance) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("Select * ")
+		  .append("FROM tb_account ")
+		  .append("WHERE accountId = ? AND balance >= ? ");
+		
+		try {
+			String query = sb.toString();
+			pstmt = conn.prepareStatement(query);
+			
+			// query의 ? 부분을 해당 값으로 치환
+			pstmt.setInt(1, accountId);
+			pstmt.setInt(2, balance);
+			
+			// DML은 executeUpdate()로 질의
+			result = pstmt.executeUpdate();	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+			} catch (SQLException e) { e.printStackTrace(); }
+		}
+		
+		return (result != 0);
+	}
 }
