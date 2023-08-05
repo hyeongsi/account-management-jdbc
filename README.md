@@ -3,7 +3,9 @@
 <br/>
 
 ## 🎯 개요
-> [JDBC 사용법 정리 및 코드 해석](https://github.com/hyeongsi/jdbc_account_management/issues/6#issue-1837781040)
+> JDBC 사용법을 정리하기 위한 토이 프로젝트 입니다.
+
+> **[JDBC 사용법 정리 및 코드 해석](https://github.com/hyeongsi/jdbc_account_management/issues/6#issue-1837781040)**
 <br/>
 
 ## 🛠 기술 스택 및 개발 환경
