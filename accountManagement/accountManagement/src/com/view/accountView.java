@@ -97,6 +97,8 @@ public class accountView {
 	
 	public static void renderDTO(ArrayList<AccountDTO> list) {
 		StringBuilder sb = new StringBuilder();
+		
+		sb.append('\n');
 		sb.append(AccountDTO.getHeader()).append('\n');
 		
 		for(AccountDTO dto : list) {

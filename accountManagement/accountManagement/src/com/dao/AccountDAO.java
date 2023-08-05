@@ -16,7 +16,7 @@ public class AccountDAO {
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT accountId, name, balance ")
-		  .append("FROM account");
+		  .append("FROM tb_account");
 		
 		try {
 			String query = sb.toString();
@@ -54,8 +54,8 @@ public class AccountDAO {
 		PreparedStatement pstmt = null;
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("UPDATE account ")
-		  .append("SET balance=balance + ? ")
+		sb.append("UPDATE tb_account ")
+		  .append("SET balance=(balance+?) ")
 		  .append("WHERE accountId=? ");
 		
 		try {
@@ -73,9 +73,7 @@ public class AccountDAO {
 		} finally {
 			try {
 				if(pstmt != null) pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			} catch (SQLException e) { e.printStackTrace(); }
 		}
 		
 		return result;

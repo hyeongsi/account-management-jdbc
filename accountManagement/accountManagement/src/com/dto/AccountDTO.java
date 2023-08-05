@@ -1,5 +1,7 @@
 package com.dto;
 
+import java.text.DecimalFormat;
+
 public class AccountDTO{
 
 	int accountId;	// 계좌 id
@@ -33,9 +35,11 @@ public class AccountDTO{
 	}
 	
 	public static String getHeader() {	
-		return String.format("%-10s\t %-10s\t %-10s", "accountId", "name", "balance");
+		return String.format("%-10s\t %-10s\t %20s", "accountId", "name", "balance");
 	}
 	public String getDTO() {
-		return String.format("%-10d\t %-10s\t %-10d", accountId, name, balance);
+		DecimalFormat decFormat = new DecimalFormat("###,###");
+		String balance = decFormat.format(this.balance);
+		return String.format("%-10d\t %-10s\t %20s 원", accountId, name, balance);
 	}
 }
