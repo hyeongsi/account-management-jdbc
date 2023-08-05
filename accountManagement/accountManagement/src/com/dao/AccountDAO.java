@@ -78,13 +78,32 @@ public class AccountDAO {
 		
 		return result;
 	}
-	public int deposit(Connection conn, int accountId, int amount) {
+
+	public int create(Connection conn, String name) {
 		int result = 0;
 		
-		return result;
-	}
-	public int create(Connection conn, AccountDTO dto) {
-		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("INSERT INTO account.tb_account(accountId, name) ")
+		  .append("VALUES (account.account_id_seq.nextval, ?) ");
+		
+		try {
+			String query = sb.toString();
+			pstmt = conn.prepareStatement(query);
+			
+			// query의 ? 부분을 해당 값으로 치환
+			pstmt.setString(1, name);	
+			
+			// DML은 executeUpdate()로 질의
+			result = pstmt.executeUpdate();			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+			} catch (SQLException e) { e.printStackTrace(); }
+		}
 		
 		return result;
 	}

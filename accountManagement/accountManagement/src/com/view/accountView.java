@@ -63,33 +63,33 @@ public class accountView {
 		renderDTO(list);
 	}
 	public static void transfer(Scanner scan) {
-		System.out.println("송신자의 계정 id를 입력해주세요.");
+		System.out.print("송신자의 계정 id를 입력해주세요. => ");
 		int sendAcntId = scan.nextInt();
-		System.out.println("보낼 금액을 입력해주세요.");
+		System.out.print("보낼 금액을 입력해주세요. => ");
 		int amount = scan.nextInt();
-		System.out.println("수신자의 계정 id를 입력해주세요.");
+		System.out.print("수신자의 계정 id를 입력해주세요. => ");
 		int recvAcntId = scan.nextInt();
 		
 		service.transfer(sendAcntId, recvAcntId, amount);
 		// 송수신 처리 여부에 따라 예외처리
 	}
 	public static void deposit(Scanner scan) {
-		System.out.println("입금할 계정의 id를 입력해주세요.");
+		System.out.print("입금할 계정의 id를 입력해주세요. => ");
 		int recvAcntId = scan.nextInt();
-		System.out.println("입금할 금액을 입력해주세요.");
+		System.out.print("입금할 금액을 입력해주세요. => ");
 		int amount = scan.nextInt();
 		
 		service.deposit(recvAcntId, amount);
 		// 송수신 처리 여부에 따라 예외처리
 	}
 	public static void createAccount(Scanner scan) {
-		System.out.println("계정을 생성하는분의 이름을 입력해주세요.");
+		System.out.print("계정을 생성하는분의 이름을 입력해주세요. => ");
 		String name = scan.next();
 		
 		service.createAccount(name);
 	}
 	public static void deleteAccount(Scanner scan) {
-		System.out.println("삭제할 계정의 id를 입력해주세요.");
+		System.out.print ("삭제할 계정의 id를 입력해주세요. => ");
 		int id = scan.nextInt();
 		
 		service.deleteAccount(id);
