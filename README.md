@@ -1,9 +1,9 @@
 # 📁 account management
-> JDBC를 이용한 계좌 관리 토이 프로젝트 입니다.
+> JDBC를 이용한 계좌 관리 프로젝트 입니다.
 <br/>
 
 ## 🎯 개요
-> jdbc학습 정리
+> jdbc사용법 정리
 <br/>
 
 ## 🛠 기술 스택 및 개발 환경
@@ -53,11 +53,11 @@
 
 <br/>
 
-## 🛠 가이드라인
-0. 프로젝트 로드
-1. utf-8 설정
-2. oracle jdbc driver buildpath
-3. create user, table, init data 
+## 🕹 실행 가이드라인
+### [0️⃣ 프로젝트 로드](https://github.com/hyeongsi/jdbc_account_management/issues/1#issue-1837711412)
+### [1️⃣ utf-8 설정](https://github.com/hyeongsi/jdbc_account_management/issues/2#issue-1837712641)
+### [2️⃣ oracle jdbc driver buildpath](https://github.com/hyeongsi/jdbc_account_management/issues/3#issue-1837713794)
+### [3️⃣ create user, table, init data](https://github.com/hyeongsi/jdbc_account_management/issues/4#issue-1837732672)
 <br/><br/>
 
 ## 📺 실행 이미지 / 영상
