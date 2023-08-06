@@ -67,13 +67,13 @@
 ### 🎥 실행 영상
 
 ### 0️⃣ 전체 데이터 조회
-<img src=""/>
+<img src="https://github.com/hyeongsi/image-gif-storage/blob/main/jdbc-accountManagement/readAll.gif?raw=true"/>
 
 ### 1️⃣ 송금
-<img src=""/>
+<img src="https://github.com/hyeongsi/image-gif-storage/blob/main/jdbc-accountManagement/send.gif?raw=true"/>
 
 ### 2️⃣ 입금
-<img src=""/>
+<img src="https://github.com/hyeongsi/image-gif-storage/blob/main/jdbc-accountManagement/recv.gif?raw=true"/>
 
 ### 3️⃣ 계좌 추가
 <img src="https://user-images.githubusercontent.com/71202869/258586670-d27d40c1-25fb-49c5-ab4a-d8fb900a5372.gif"/>
@@ -82,13 +82,13 @@
 <img src="https://user-images.githubusercontent.com/71202869/258586675-39694ac8-4412-4bbe-822d-06bdd467b9f1.gif"/>
 
 ### 5️⃣ 송신에러 처리
-<img src=""/>
+<img src="https://github.com/hyeongsi/image-gif-storage/blob/main/jdbc-accountManagement/sendError.gif?raw=true"/>
 
 ### 6️⃣ 수신에러 처리
-<img src=""/>
+<img src="https://github.com/hyeongsi/image-gif-storage/blob/main/jdbc-accountManagement/recvError.gif?raw=true"/>
 
-### <a href = "">7️⃣ 삭제에러 처리</a>
-<img src=""/>
+### 7️⃣ 삭제에러 처리
+<img src="https://github.com/hyeongsi/image-gif-storage/blob/main/jdbc-accountManagement/deleteError.gif?raw=true"/>
 
 ### 8️⃣ 종료
-<img src=""/>
+<img src="https://github.com/hyeongsi/image-gif-storage/blob/main/jdbc-accountManagement/exit.gif?raw=true"/>
