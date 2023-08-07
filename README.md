@@ -1,5 +1,7 @@
 # 📁 account management
 > JDBC를 이용한 계좌 관리 프로젝트 입니다.
+
+> **[JDBC 부분을 Mybatis로 작업한 프로젝트 보러가기](https://github.com/hyeongsi/mybatis-account-management)**
 <br/>
 
 ## 🎯 개요
