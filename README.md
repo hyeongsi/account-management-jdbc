@@ -1,11 +1,11 @@
-# 📁 account management
+# 📁 account management (JDBC)
 > JDBC를 이용한 계좌 관리 프로젝트 입니다.
 
 > **[MyBatis로 작업한 프로젝트 보러가기](https://github.com/hyeongsi/mybatis-account-management)**
 <br/>
 
 ## 🎯 개요
-> JDBC와 Mybatis의 장단점을 비교하고 사용법을 정리하기 위한 토이 프로젝트 입니다.
+> JDBC와 MyBatis를 비교하며 사용법을 정리하기 위한 토이 프로젝트 입니다.
 
 > **[JDBC 사용법 정리 및 코드 해석](https://github.com/hyeongsi/jdbc_account_management/issues/6#issue-1837781040)**
 <br/>
