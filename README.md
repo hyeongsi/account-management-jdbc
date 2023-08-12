@@ -7,7 +7,8 @@
 ## 🎯 개요
 > JDBC와 MyBatis를 비교하며 사용법을 정리하기 위한 토이 프로젝트 입니다.
 
-> **[JDBC 사용법 정리 및 코드 해석](https://github.com/hyeongsi/jdbc_account_management/issues/6#issue-1837781040)**
+> **[JDBC CRUD test code](https://github.com/hyeongsi/account-management-jdbc/issues/10#issue-1847952639)**<br>
+> **[작성한 코드 정리 및 해설](https://github.com/hyeongsi/jdbc_account_management/issues/6#issue-1837781040)**
 <br/>
 
 ## 🛠 기술 스택 및 개발 환경
